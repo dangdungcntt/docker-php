@@ -6,7 +6,9 @@ COPY nginx.conf /etc/nginx/nginx.conf
 
 COPY conf.d /etc/nginx/conf.d/
 
-COPY www.conf /etc/php/7.4/php-fpm.d/www.conf
+COPY www.conf /usr/local/etc/php-fpm.d/www.conf
+
+COPY empty.conf /usr/local/etc/php-fpm.d/zz-docker.conf
 
 COPY supervisord.conf /etc/supervisord.conf
 
