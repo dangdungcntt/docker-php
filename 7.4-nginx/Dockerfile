@@ -18,8 +18,9 @@ RUN apk add --no-cache \
     supervisor \
     jpegoptim \
     pngquant \
-    optipng \
-    gifsicle \
-    composer \
+    && apk add --no-cache --virtual build-dependencies build-base openssl-dev autoconf \
+    && pecl install redis \
+    && docker-php-ext-enable redis \
+    && apk del build-dependencies build-base openssl-dev autoconf \
     && docker-php-ext-install pdo_mysql \
-    && composer self-update --2
+    && curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
