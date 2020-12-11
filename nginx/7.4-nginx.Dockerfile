@@ -1,15 +1,13 @@
 FROM dangdungcntt/phpearth:7.4-nginx
 
 RUN apk add --no-cache \
-    git \
     mysql-client \
     supervisor \
     jpegoptim \
     pngquant \
-    && install-php-extensions redis pdo_mysql \
-    && curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+    && install-php-extensions redis pdo_mysql
 
-COPY php-fpm.d /usr/local/etc/php-fpm.d
+COPY php-fpm.d /usr/local/etc/php-fpm.d/
 
 COPY conf.d /etc/nginx/conf.d/
 
