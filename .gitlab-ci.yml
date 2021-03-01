@@ -1,0 +1,21 @@
+image: docker:latest
+
+variables:
+  DOCKER_GROUP: "dangdungcntt"
+  DOCKER_IMAGE: "php"
+
+stages:
+  - dockerize
+
+dockerize:
+  stage: dockerize
+  only:
+    - tags
+  script:
+    - echo $DOCKER_REGISTRY_PASSWORD | docker login -u $DOCKER_REGISTRY_USER $DOCKER_REGISTRY_URL --password-stdin
+    - export DOCKER_REPO=${DOCKER_REGISTRY_URL}/${DOCKER_GROUP}/${DOCKER_IMAGE}
+    - cd alpine && ./build.sh
+    - cd ../phpearth && ./build.sh
+    - cd ../nginx && ./build.sh
+    - cd ../wordpress && ./build.sh
+    - cd .. && ./build.sh
