@@ -17,5 +17,6 @@ dockerize:
     - cd alpine && ./build.sh
     - cd ../phpearth && ./build.sh
     - cd ../nginx && ./build.sh
+    - cd ../nginx-mongodb && ./build.sh
     - cd ../wordpress && ./build.sh
     - cd .. && ./build.sh
