@@ -4,6 +4,6 @@ for i in `find . -name "Dockerfile" -type f`; do
     IMAGE_NAME="${DOCKER_REPO}:${TAG_NAME}"
     CONTEXT=$(echo ${i} | sed 's/\/Dockerfile//')
     echo "Building ${IMAGE_NAME} with Dockerfile ${i}"
-    docker build -t ${IMAGE_NAME} -f ${i} ${CONTEXT}
+    docker build --pull -t ${IMAGE_NAME} -f ${i} ${CONTEXT}
     docker push ${IMAGE_NAME}
 done
