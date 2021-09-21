@@ -5,7 +5,7 @@ RUN apk add --no-cache \
     supervisor \
     jpegoptim \
     pngquant \
-    && install-php-extensions redis pdo_mysql
+    && install-php-extensions redis-stable pdo_mysql-stable
 
 COPY php-fpm.d /usr/local/etc/php-fpm.d/
 

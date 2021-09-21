@@ -1,4 +1,4 @@
-image: docker:latest
+image: docker.nddapp.com/library/docker:20
 
 variables:
   DOCKER_GROUP: "dangdungcntt"

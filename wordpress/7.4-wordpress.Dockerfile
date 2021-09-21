@@ -1,3 +1,3 @@
 FROM dangdungcntt/php:7.4-nginx
 
-RUN install-php-extensions mysqli
+RUN install-php-extensions mysqli-stable
