@@ -17,4 +17,5 @@ dockerize:
     - cd ../nginx && ./build.sh
     - cd ../nginx-mongodb && ./build.sh
     - cd ../wordpress && ./build.sh
+    - cd ../mongodb-swoole && ./build.sh
     - cd .. && ./build.sh
