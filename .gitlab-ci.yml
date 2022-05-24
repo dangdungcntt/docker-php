@@ -7,7 +7,7 @@ variables:
 stages:
   - dockerize
 
-dockerize:
+dockerize base image:
   stage: dockerize
   script:
     - echo $DOCKER_REGISTRY_PASSWORD | docker login -u $DOCKER_REGISTRY_USER $DOCKER_REGISTRY_URL --password-stdin
@@ -16,6 +16,15 @@ dockerize:
     - cd ../phpearth && ./build.sh
     - cd ../nginx && ./build.sh
     - cd ../nginx-mongodb && ./build.sh
-    - cd ../wordpress && ./build.sh
+
+dockerize custom image:
+  stage: dockerize
+  when: manual
+  needs:
+    - dockerize base image
+  script:
+    - echo $DOCKER_REGISTRY_PASSWORD | docker login -u $DOCKER_REGISTRY_USER $DOCKER_REGISTRY_URL --password-stdin
+    - export DOCKER_REPO=${DOCKER_REGISTRY_URL}/${DOCKER_GROUP}/${DOCKER_IMAGE}
+    - cd wordpress && ./build.sh
     - cd ../mongodb-swoole && ./build.sh
     - cd .. && ./build.sh
