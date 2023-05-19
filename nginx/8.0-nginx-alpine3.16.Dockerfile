@@ -1,4 +1,4 @@
-FROM dangdungcntt/phpearth:8.0-nginx-alpine3.18
+FROM dangdungcntt/phpearth:8.0-nginx-alpine3.16
 
 RUN apk add --no-cache \
     supervisor \
