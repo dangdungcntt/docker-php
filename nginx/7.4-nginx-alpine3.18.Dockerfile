@@ -1,10 +1,11 @@
-FROM dangdungcntt/phpearth:8.1-nginx-alpine3.15
+FROM dangdungcntt/phpearth:7.4-nginx-alpine3.18
 
 RUN apk add --no-cache \
+    mysql-client \
     supervisor \
     jpegoptim \
     pngquant \
-    && install-php-extensions redis-stable pdo_pgsql
+    && install-php-extensions redis-stable pdo_mysql
 
 COPY php-fpm.d /usr/local/etc/php-fpm.d/
 

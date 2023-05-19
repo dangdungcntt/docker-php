@@ -1,4 +1,4 @@
-FROM dangdungcntt/php:7.4-fpm-alpine3.15
+FROM dangdungcntt/php:8.0-fpm-alpine3.18
 
 # When using Composer, disable the warning about running commands as root/super user
 ENV COMPOSER_ALLOW_SUPERUSER=1
