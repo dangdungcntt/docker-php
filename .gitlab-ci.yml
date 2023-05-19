@@ -15,7 +15,6 @@ dockerize base image:
     - cd alpine && ./build.sh
     - cd ../phpearth && ./build.sh
     - cd ../nginx && ./build.sh
-    - cd ../nginx-mongodb && ./build.sh
 
 dockerize custom image:
   stage: dockerize
@@ -26,5 +25,6 @@ dockerize custom image:
     - echo $DOCKER_REGISTRY_PASSWORD | docker login -u $DOCKER_REGISTRY_USER $DOCKER_REGISTRY_URL --password-stdin
     - export DOCKER_REPO=${DOCKER_REGISTRY_URL}/${DOCKER_GROUP}/${DOCKER_IMAGE}
     - cd wordpress && ./build.sh
+    - cd ../nginx-mongodb && ./build.sh
     - cd ../mongodb-swoole && ./build.sh
     - cd .. && ./build.sh
