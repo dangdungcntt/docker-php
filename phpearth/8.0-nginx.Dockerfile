@@ -19,6 +19,10 @@ RUN set -x \
 
 COPY tags/nginx /
 
+COPY docker-entrypoint.sh /docker-entrypoint.sh
+
 EXPOSE 80
+
+ENTRYPOINT ["/docker-entrypoint.sh"]
 
 CMD ["/sbin/runit-wrapper"]
