@@ -17,13 +17,13 @@ read_secret() {
 
 # Function to read environment variables mapping to secret names
 mapDockerSecrets() {
-    IFS=',' read -ra map_secrets <<< "$MAP_DOCKER_SECRETS"
-
-    if [ ! -n "$map_secrets" ]; then
+    if [ -z "$MAP_DOCKER_SECRETS" ]; then
         return
     fi
 
-    for env_var_name in "${map_secrets[@]}"; do
+    IFS=','
+
+    for env_var_name in $MAP_DOCKER_SECRETS; do
         local lower_var_name=$(echo "$env_var_name" | tr '[:upper:]' '[:lower:]')
 
         if [ -f "$secret_folder/$lower_var_name" ]; then
