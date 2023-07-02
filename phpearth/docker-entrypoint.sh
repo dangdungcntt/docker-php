@@ -11,7 +11,7 @@ read_secret() {
     local env_var_name=${2:-$default_var_name}
 
     if [ -f "$secret_file" ]; then
-        export "$env_var_name"=$(cat "$secret_file")
+        export "$env_var_name"="$(cat "$secret_file")"
     fi
 }
 
